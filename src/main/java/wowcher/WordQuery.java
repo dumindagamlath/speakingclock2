@@ -20,14 +20,8 @@ public class WordQuery implements TemporalQuery<String> {
         } else {
             appendWord(t.getHour(), 20, timeString);
             int minute = t.getMinute();
-            if (minute > 50) {
-                appendWord(t.getMinute(), 50, timeString);
-            } if (minute > 40) {
-                appendWord(t.getMinute(), 40, timeString);
-            } if (minute > 30) {
-                appendWord(t.getMinute(), 30, timeString);
-            } if (minute > 20) {
-                appendWord(t.getMinute(), 20, timeString);
+            if (minute > 20) {
+                appendWord(t.getMinute(), Math.floorDiv(minute, 10) * 10, timeString);
             } else if (minute > 0) {
                 timeString.add(TimeConstants.timeMap.get(minute));
             }
