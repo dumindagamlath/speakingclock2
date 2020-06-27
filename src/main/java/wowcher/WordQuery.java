@@ -20,7 +20,7 @@ public class WordQuery implements TemporalQuery<String> {
         } else if (t.compareTo(LocalTime.NOON) == 0) {
             timeString.add(TimeConstants.MIDDAY);
         } else {
-            timeString.add(wordFinder(t.getHour(), 20, (a, b) -> (a <= b || b == 0)));
+            timeString.add(wordFinder(t.getHour(), 20, (a, b) -> (a <= b)));
             int minute = t.getMinute();
             if (minute > 0) {
                 timeString.add(wordFinder(minute, minute > 20 ? Math.floorDiv(minute, 10) * 10 : 0, (a, b) -> (a <= b || b == 0)));
