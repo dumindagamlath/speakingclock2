@@ -21,7 +21,7 @@ public class WordQuery implements TemporalQuery<String> {
             appendWord(t.getHour(), 20, timeString);
             int minute = t.getMinute();
             if (minute > 20) {
-                appendWord(t.getMinute(), Math.floorDiv(minute, 10) * 10, timeString);
+                appendWord(minute, Math.floorDiv(minute, 10) * 10, timeString);
             } else if (minute > 0) {
                 timeString.add(TimeConstants.timeMap.get(minute));
             }
