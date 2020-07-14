@@ -3,6 +3,7 @@ package wowcher;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.TemporalQuery;
+import java.util.Optional;
 import java.util.StringJoiner;
 
 import wowcher.constants.TimeConstants;
@@ -15,13 +16,8 @@ public class SpeakingClock {
 
     public String getTime(final String time) throws InvalidTimeException {
         String timeString = null;
-        LocalTime localTime = null;
-        if (time == null || time.isEmpty()) {
-            throw InvalidTimeException.of(Issue.EMPTY_TIME);
-        }
-
         try {
-            localTime = LocalTime.parse(time);
+            LocalTime localTime = LocalTime.parse(time);
             timeString = localTime.query(wordQuery);
         } catch (DateTimeParseException dtpe) {
             throw InvalidTimeException.of(Issue.WRONG_TIME_FORMAT);

@@ -12,8 +12,6 @@ import wowcher.exception.InvalidTimeException;
 import wowcher.exception.Issue;
 
 public class SpeakingClockTest {
-    private final String EMPTY_TIME = null;
-
     private final String INVALID_TIME_FORMAT = "88.23";
 
     private final String MID_DAY_TIME = "12:00";
@@ -41,15 +39,6 @@ public class SpeakingClockTest {
     @Before
     public void init() {
         speakingClock = new SpeakingClock();
-    }
-
-    @Test
-    public void getTime_throw_InvalidTimeException_EMPTY_TIME_when_time_is_null() throws InvalidTimeException {
-        try {
-            speakingClock.getTime(EMPTY_TIME);
-        } catch (InvalidTimeException ite) {
-            Assert.assertEquals(ite.getIssue().getErrorCode(), Issue.EMPTY_TIME.getErrorCode());
-        }
     }
 
     @Test
@@ -84,8 +73,7 @@ public class SpeakingClockTest {
         final String timeString = speakingClock.getTime(TIME_1);
 
         final LocalTime time = LocalTime.parse(TIME_1);
-        Assert.assertTrue(timeString.contains(TimeConstants.timeMap.get(time.getHour())));
-        Assert.assertTrue(timeString.contains(TimeConstants.timeMap.get(time.getMinute())));
+        Assert.assertTrue(timeString.contains("one eighteen"));
     }
 
     @Test
