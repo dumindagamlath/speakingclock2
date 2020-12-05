@@ -32,7 +32,7 @@ public class SpeakingClockTest {
 
     private final String TIME_7 = "00:59";
 
-    private final String TIME_8 = "02:00";
+    private final String TIME_8 = "03:00";
 
     SpeakingClock speakingClock;
 
@@ -133,6 +133,6 @@ public class SpeakingClockTest {
             throws InvalidTimeException {
         final String timeString = speakingClock.getTime(TIME_8);
 
-        Assert.assertTrue(timeString.endsWith("two"));
+        Assert.assertTrue(timeString.endsWith("three"));
     }
 }
